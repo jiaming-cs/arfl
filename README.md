@@ -1,5 +1,7 @@
-# Auto-weighted Robust Federated Learning with Unreliable Clients
+# Auto-weighted Robust Federated Learning with Corrupted Data Sources
 
+This repository contains the code and experiments for the paper:
+[Auto-weighted Robust Federated Learning with Corrupted Data Sources](https://arxiv.org/abs/2101.05880)
 
 ## Datasets
 
@@ -17,7 +19,7 @@
 3. Shakespeare
 
   * **Overview:** Text Dataset of Shakespeare Dialogues
-  * **Details:** 1129 users (reduced to 660 with our choice of sequence length. See [bug](https://github.com/TalwalkarLab/leaf/issues/19).)
+  * **Details:** 1129 users (reduced to 660 with our choice of sequence length.
   * **Task:** Next-Character Prediction
 
 ## Notes
