@@ -7,7 +7,8 @@ pip install -r requirements.txt
 
 pushd ./data/shakespeare/ || exit
 rm -rf ./data ./meta
-./preprocess.sh -s niid --sf 0.1 -k 0 -t sample -tf 0.8 --smplseed 0
+#./preprocess.sh -s niid --sf 0.1 -k 0 -t sample -tf 0.8 --smplseed 0
+
 
 pushd ./preprocess || exit
 python download_data.py
@@ -16,9 +17,12 @@ popd || exit
 popd || exit
 
 pushd ./data/femnist/preprocess || exit
-python download_data.py
+rm -rf ../data ../meta
+wget https://www.dropbox.com/s/0m4r7pk8xpyfbq3/ditto_femnist.zip
+mkdir -p ../data
+unzip -o + ditto_femnist.zip -d ../data
 popd || exit
 
 pushd ./data/cifar10/preprocess || exit
-python get_cifar10.py
+#python get_cifar10.py
 popd || exit
