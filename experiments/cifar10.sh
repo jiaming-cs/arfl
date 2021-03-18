@@ -14,7 +14,7 @@ setup_clients=1.0
 batch_size=64
 
 pushd ../data/cifar10/preprocess || exit
-  python get_cifar10.py
+  python get_cifar10.py --num_clients 50 --noniid
 popd || exit
 
 mkdir -p results/${dataset} log/${dataset}
