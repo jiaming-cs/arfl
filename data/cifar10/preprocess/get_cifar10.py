@@ -72,6 +72,6 @@ if __name__ == '__main__':
     flag_parser.add_argument('--iid', dest='iid', action='store_true')
     flag_parser.add_argument('--noniid', dest='iid', action='store_false')
     parser.add_argument('--num_clients', type=int, default=100, required=False)
-    parser.set_defaults(iid=True)
+    parser.set_defaults(iid=False)
     args = parser.parse_args()
     generate_datasets(args.iid, num_clients=args.num_clients)
