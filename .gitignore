@@ -33,5 +33,4 @@ experiments/results/*
 /FedMA/data/cifar10/cifar-10-batches-py/
 /FedMA/data/cifar10/cifar-10-python.tar.gz
 /experiments/saved_models/
-/models/metrics/
 
