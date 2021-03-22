@@ -46,7 +46,7 @@ def main():
     if args.loadmodel:
         model = tf.keras.models.load_model(log_filename + "_model")
         server.set_model(model)
-    client_ids, client_groups, client_num_samples = manager.get_clients_info()
+    client_ids, client_groups, num_train_samples, num_test_samples = manager.get_clients_info()
     
     # Initial status
     print('--- Random Initialization ---')
@@ -69,9 +69,9 @@ def main():
         # Test model
         if (i + 1) % eval_every == 0 or (i + 1) == num_rounds:
             test_stat_metrics = server.test_model(i, set_to_use='train')  # Evaluate training loss
-            print_metrics(test_stat_metrics, client_num_samples, prefix='{}_'.format('train'))
+            print_metrics(test_stat_metrics, num_train_samples, prefix='{}_'.format('train'))
             test_stat_metrics = server.test_model(i, set_to_use='test')
-            print_metrics(test_stat_metrics, client_num_samples, prefix='{}_'.format('test'))
+            print_metrics(test_stat_metrics, num_test_samples, prefix='{}_'.format('test'))
     
     # Save model when training ends
     server.save_model(log_filename + "_model")

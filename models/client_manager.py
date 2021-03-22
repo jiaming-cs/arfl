@@ -108,5 +108,6 @@ class ClientManager():
 
         ids = [c.id for c in self.clients]
         # groups = {c.id: c.group for c in self.clients}
-        num_samples = {c.id: c.num_samples for c in self.clients}
-        return ids, None, num_samples
+        num_train_samples = {c.id: c.num_train_samples for c in self.clients}
+        num_test_samples = {c.id: c.num_test_samples for c in self.clients}
+        return ids, None, num_train_samples, num_test_samples
