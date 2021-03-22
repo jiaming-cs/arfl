@@ -174,7 +174,8 @@ class Server:
         base = [0] * len(self.updates[0][1])
         weights = [client_samples for (client_samples, _, _) in self.updates]
         nor_weights = np.array(weights) / np.sum(weights)
-
+        for c, w in zip(self.selected_clients, nor_weights):
+            c.set_weight(w)
         for idx, (client_samples, client_model, _) in enumerate(self.updates):
             for i, v in enumerate(client_model):
                 base[i] += (nor_weights[idx] * v.astype(np.float64))
