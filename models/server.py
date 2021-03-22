@@ -159,17 +159,28 @@ class Server:
         self.__getattribute__('aggregate_' + method)()
 
     def aggregate_fedavg(self):
-        total_weight = 0.
+        # total_weight = 0.
+        # base = [0] * len(self.updates[0][1])
+        # for (client_samples, client_model, _) in self.updates:
+        #     total_weight += client_samples
+        #     for i, v in enumerate(client_model):
+        #         base[i] += (client_samples * v)
+        # averaged_soln = [v / total_weight for v in base]
+        #
+        # self.model = averaged_soln
+        # self.updates = []
+
+
         base = [0] * len(self.updates[0][1])
-        for (client_samples, client_model, _) in self.updates:
-            total_weight += client_samples
+        weights = [client_samples for (client_samples, _, _) in self.updates]
+        nor_weights = np.array(weights) / np.sum(weights)
+
+        for idx, (client_samples, client_model, _) in enumerate(self.updates):
             for i, v in enumerate(client_model):
-                base[i] += (client_samples * v)
-        averaged_soln = [v / total_weight for v in base]
-
-        self.model = averaged_soln
+                base[i] += (nor_weights[idx] * v.astype(np.float64))
+        self.model = base
         self.updates = []
-
+        
     def aggregate_arfl(self):
         if sum([c.weight for c in self.selected_clients]) >= 0:
             base = [0] * len(self.updates[0][1])
