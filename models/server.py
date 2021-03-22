@@ -151,7 +151,7 @@ class Server:
                 self.client_manager.set_model_params(self.model)
 
         weights = [c.weight for c in clients]
-        samples = [c.num_samples for c in clients]
+        samples = [c.num_train_samples for c in clients]
         self.updates.extend((n, u, w) for n, (c, u), w in zip(samples, all_results, weights))
         print('training time {}'.format(time.time() - t1))
 
@@ -341,7 +341,11 @@ class Server:
             metrics[client.id] = c_metrics
             client.loss[set_to_use] = result['loss']
             if log:
-                info = [client.id, round_number + 1, client.num_samples, set_to_use, result["loss"], result['accuracy'],
+                if set_to_use=='test':
+                    num_samples = client.num_test_samples
+                else:
+                    num_samples = client.num_train_samples
+                info = [client.id, round_number + 1, num_samples, set_to_use, result["loss"], result['accuracy'],
                         client.weight, client.is_corrupted]
                 log_info = ','.join([str(i) for i in info])
                 logging.info(log_info)
