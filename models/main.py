@@ -48,8 +48,8 @@ def main():
         server.set_model(model)
     client_ids, client_groups, num_train_samples, num_test_samples = manager.get_clients_info()
     total_train_samples = np.sum(list(num_train_samples.values()))
-    for c, n in zip(clients, num_train_samples):
-        c.set_weight(n / total_train_samples)
+    for c, n in zip(clients, num_train_samples.values()):
+        c.set_weight(float(n) / total_train_samples)
     
     # Initial status
     print('--- Random Initialization ---')
