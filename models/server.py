@@ -199,7 +199,7 @@ class Server:
         """
         points = [client_model for (_, client_model, _) in self.updates]
         if alphas is None:
-            alphas = [client_samples for (client_samples, _, _) in self.updates]
+            alphas = [w for (_, _, w) in self.updates]
         alphas = np.asarray(alphas, dtype=points[0][0].dtype) / sum(alphas)
         median = self.weighted_average_oracle(points, alphas)
         num_oracle_calls = 1
