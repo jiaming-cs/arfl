@@ -19,6 +19,7 @@ pushd ../
 pushd models/ || exit
 #method=$1
 for method in "arfl" "cfl" "mkrum" "rfa"
+do
   for seed in 0 1 2 3 4
       do
           output_name=${dataset}_$1_${pc}_${ps}_${attack_type}_${lambda}_${seed}
