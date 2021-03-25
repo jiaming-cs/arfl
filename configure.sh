@@ -18,7 +18,7 @@ popd || exit
 
 pushd ./data/femnist/preprocess || exit
 rm -rf ../data ../meta
-wget https://www.dropbox.com/s/psczerf2oh7geqr/ditto_femnist.zip
+wget https://www.dropbox.com/s/nhrl2ep4r12nu18/femnist.zip
 mkdir -p ../data
 unzip -o ditto_femnist.zip -d ../data
 rm ditto_femnist.zip
