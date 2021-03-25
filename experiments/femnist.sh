@@ -22,7 +22,7 @@ for method in "arfl" "cfl" "mkrum" "rfa"
 do
   for seed in 0 1 2 3 4
       do
-          output_name=${dataset}_$1_${pc}_${ps}_${attack_type}_${lambda}_${seed}
+          output_name=${dataset}_${method}_${pc}_${ps}_${attack_type}_${lambda}_${seed}
               python main.py --dataset ${dataset} --model cnn --setup_clients ${setup_clients} --num_actors ${actors} \
                  --batch-size ${batch_size} --num_gpus ${gpus} --seed ${seed} --clients-per-round ${per_round} \
                  --reg_weight ${lambda} --num-epochs ${epochs} --num-rounds ${num_rounds} --method ${method} -pc ${pc} -ps ${ps} \
