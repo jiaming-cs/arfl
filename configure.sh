@@ -21,7 +21,7 @@ rm -rf ../data ../meta
 wget https://www.dropbox.com/s/nhrl2ep4r12nu18/femnist.zip
 mkdir -p ../data
 unzip -o femnist.zip -d ../data
-rm ditto_femnist.zip
+rm femnist.zip
 popd || exit
 
 pushd ./data/cifar10/preprocess || exit

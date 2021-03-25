@@ -4,7 +4,7 @@ model="lstm"
 dataset="shakespeare"
 pc=0.5
 ps=1.0
-epochs=5
+epochs=1
 seed=0
 actors=8
 gpus=2
@@ -23,7 +23,7 @@ pushd models/ || exit
 method=$1
 
 
-for method in "arfl" "cfl" "mkrum" "rfa"
+for method in "fedavg" "arfl" "cfl" "mkrum" "rfa"
 do
   for seed in 0 1 2 3 4
       do
